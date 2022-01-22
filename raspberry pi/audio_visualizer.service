@@ -1,0 +1,20 @@
+Description=Audio visualisation system
+After=network.target
+
+[Service]
+Type = simple
+Environment="DISPLAY=:0"
+Environment="XAUTHORITY=/home/pi/.Xauthority"
+ExecStart=/usr/bin/python3 /home/pi/Workspace/audio_visualizer.py
+WorkingDirectory=/home/pi/Workspace
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Unit]
+StartLimitIntervalSec=20
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target
